@@ -1,0 +1,42 @@
+import random
+attempts_list = []
+def show_score():
+    if len(attempts_list)<= 0:
+        print("There is currently no high Score, it's yours for the stealing muhahahhahaha!")
+    else:
+        print("The current high score is:", min(attempts_list), "attempts")
+
+def start_game():
+    name = input("What is your name sonny boy?")
+    print("👋 welcome",name, "!")
+    print("I am thinking of a number from 1 to 50 pls pick a number.")
+
+    show_score()
+    play = input("Do you want to play my game?yes or no answer quick i dont have all day")
+    while play.lower() == "yes":
+        number = random.randint(1,50)
+        attempts = 0
+        while True:
+            try:
+                guess = int(input("Guess A Number:"))
+                if guess <1 or guess > 50:
+                    print("Please choose a number from 1 to 10.")
+                    continue
+                attempts = attempts +1
+                if guess == number:
+                    print("Correct🎉🥳")
+                    print("You took", attempts, "attempts")
+
+                    attempts_list.append(attempts)
+                    show_score()
+                    break
+                elif guess < number:
+                    print("Too low!Try again")
+                else:
+                    print("too high!Try again")
+            except ValueError:
+                print("Please enter a number or else")
+        play = input("Would you like to play again?(yes/no):")
+    print("👍 Thanks for playing", name, "!")
+start_game()
+        
